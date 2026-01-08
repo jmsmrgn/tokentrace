@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+}
+
+body {
+  background-color: #0A0B0F;
+  color: #F1F2F4;
+  font-family: 'Syne', ui-sans-serif, sans-serif;
+  min-height: 100vh;
+}
+
+/* ── Scrollbar ─────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #0A0B0F; }
+::-webkit-scrollbar-thumb { background: #1E2028; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #2A2D38; }
+
+/* ── Typography utilities ──────────────────── */
+.font-mono { font-family: 'DM Mono', ui-monospace, monospace !important; }
+.font-display { font-family: 'Syne', ui-sans-serif, sans-serif !important; }
+
+/* ── Card ──────────────────────────────────── */
+.card {
+  background: #111318;
+  border: 1px solid #1E2028;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.45);
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+.card-interactive:hover {
+  box-shadow: 0 6px 28px rgba(0,0,0,0.55), 0 0 0 1px rgba(232,160,32,0.1);
+  transform: translateY(-1px);
+  border-color: #252830;
+}
+
+/* ── Animations ────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.anim-fade-up { animation: fadeInUp 0.45s cubic-bezier(0.16,1,0.3,1) both; }
+.anim-fade-in { animation: fadeIn  0.35s ease both; }
+
+.delay-0  { animation-delay:   0ms; }
+.delay-1  { animation-delay:  60ms; }
+.delay-2  { animation-delay: 120ms; }
+.delay-3  { animation-delay: 180ms; }
+.delay-4  { animation-delay: 240ms; }
+.delay-5  { animation-delay: 300ms; }
+.delay-6  { animation-delay: 360ms; }
+.delay-7  { animation-delay: 420ms; }
+.delay-8  { animation-delay: 480ms; }
+.delay-9  { animation-delay: 540ms; }
+
+/* ── Amber accent ──────────────────────────── */
+.amber        { color: #E8A020; }
+.amber-glow   { color: #E8A020; text-shadow: 0 0 24px rgba(232,160,32,0.35); }
+.amber-bg     { background: rgba(232,160,32,0.10); border-color: rgba(232,160,32,0.20) !important; }
+
+/* ── Status badges ─────────────────────────── */
+.badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 2px 9px; border-radius: 999px;
+  font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500;
+  letter-spacing: 0.03em; white-space: nowrap;
+}
+.badge-success { background: #1C3529; color: #6EE7B7; }
+.badge-error   { background: #3A1F1F; color: #FCA5A5; }
+
+/* ── Table ─────────────────────────────────── */
+table { border-collapse: collapse; width: 100%; }
+thead th {
+  font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.09em; color: #4B5263;
+  padding: 10px 14px; border-bottom: 1px solid #1A1C23;
+  white-space: nowrap; cursor: pointer; user-select: none;
+}
+thead th:hover { color: #F1F2F4; }
+tbody td {
+  font-family: 'DM Mono', monospace; font-size: 12px; color: #C8CAD0;
+  padding: 9px 14px; border-bottom: 1px solid #161820;
+}
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: rgba(30,32,40,0.6); }
+.th-active { color: #E8A020 !important; }
+.td-winner {
+  background: rgba(232,160,32,0.06) !important;
+  color: #E8A020 !important;
+}
+
+/* ── Filter buttons ────────────────────────── */
+.filter-btn {
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  padding: 5px 12px; border-radius: 6px; border: 1px solid #1E2028;
+  background: transparent; color: #6B7280; cursor: pointer;
+  transition: all 0.18s ease;
+}
+.filter-btn:hover { border-color: #2E3140; color: #C8CAD0; }
+.filter-btn.active { border-color: currentColor; color: var(--model-color, #E8A020); background: var(--model-bg, rgba(232,160,32,0.1)); }
+
+/* ── Recharts overrides ────────────────────── */
+.recharts-text, .recharts-cartesian-axis-tick-value {
+  fill: #4B5263 !important;
+  font-family: 'DM Mono', monospace !important;
+  font-size: 11px !important;
+}
+.recharts-cartesian-grid line { stroke: #1A1C23 !important; }
+.recharts-legend-item-text { color: #6B7280 !important; font-family: 'Syne', sans-serif !important; font-size: 11px !important; }
+.recharts-tooltip-wrapper { filter: drop-shadow(0 8px 24px rgba(0,0,0,0.6)); }
+
+/* ── Section label ─────────────────────────── */
+.section-label {
+  font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.12em; color: #3D4149;
+}
+
+/* ── Dot indicator ─────────────────────────── */
+.live-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: #22C55E;
+  box-shadow: 0 0 0 2px rgba(34,197,94,0.25);
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(34,197,94,0.25); }
+  50%       { box-shadow: 0 0 0 5px rgba(34,197,94,0.0); }
+}
+
+/* ── Pagination ────────────────────────────── */
+.page-btn {
+  font-family: 'DM Mono', monospace; font-size: 12px;
+  padding: 5px 10px; border-radius: 5px;
+  border: 1px solid #1E2028; background: transparent; color: #6B7280;
+  cursor: pointer; transition: all 0.15s;
+}
+.page-btn:hover:not(:disabled)  { border-color: #2E3140; color: #F1F2F4; }
+.page-btn:disabled               { opacity: 0.3; cursor: not-allowed; }
+.page-btn.current                { border-color: rgba(232,160,32,0.4); color: #E8A020; background: rgba(232,160,32,0.08); }
+
+/* ── Heatmap cell ──────────────────────────── */
+.heatmap-cell {
+  height: 18px; border-radius: 3px;
+  transition: opacity 0.15s; cursor: default;
+}
+.heatmap-cell:hover { opacity: 0.8; }
